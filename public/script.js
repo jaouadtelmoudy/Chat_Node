@@ -8,7 +8,6 @@ document.title = pseudo + ' - ' + document.title;
 
 socket.on('message', function(data) {
     insereMessage(data.pseudo, data.message,data.horaire);
-
 })
 
 
@@ -17,16 +16,12 @@ socket.on('nouveau_client', function(pseudo) {
 })
 
 
-$('#formulaire_chat').submit(function () {
+$('#formulaire_chat').submit(function (event) {
+    event.preventDefault();
     var message = $('#message').val();
     socket.emit('message', message);
-
-    //var dateTime="10:44";
-    var dateTime=new Date();
-    
-    insereMessage(pseudo, message, dateTime);
+    $('#message').val('');
     $('#message').val('').focus();
-    return false;
 });
 
 

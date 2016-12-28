@@ -25,8 +25,12 @@ io.sockets.on('connection', function (socket, pseudo) {
         message = ent.encode(message);
 
         var current_hour = new Date();
+        var h=current_hour.getHours();
+        var m=current_hour.getMinutes();
+        var s=current_hour.getSeconds()
 
-        socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message, horaire:current_hour});
+        //socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message, horaire:h+':'+m+' - '+s});
+        io.sockets.emit('message', {pseudo: socket.pseudo, message: message, horaire:h+':'+m+' - '+s});
     });
 
 });
