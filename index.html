@@ -4,17 +4,26 @@
     <meta charset="utf-8"/>
     <title>Super Chat temps réel !</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap/dist/css/bootstrap.min.css">
-    <style>
-        #room_chat strong {
-            color: white;
-            background-color: black;
-            padding: 2px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 
 <body>
-
+<div class="first">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <form action="/" method="post" id="formulaire_login">
+                <div class="input-group">
+                    <input id="pseudo" name="message" type="text" class="form-control input-sm"
+                           placeholder="Votre message..." autofocus />
+            <span class="input-group-btn">
+                <input type="submit" class="btn btn-warning btn-sm" id="envoi_pseudo" value="Envoyer">
+            </span>
+                </div>
+            </form>
+        </div>
+    </nav>
+</div>
 
 <section>
     <div class="container">
@@ -57,10 +66,10 @@
                         <form action="/" method="post" id="formulaire_chat">
                             <div class="input-group">
                                 <input id="message" name="message" type="text" class="form-control input-sm"
-                                       placeholder="Votre message..." autofocus/>
+                                       placeholder="Votre message..." autofocus disabled/>
 
                         <span class="input-group-btn">
-                            <input type="submit" class="btn btn-warning btn-sm" id="envoi_message" value="Envoyer">
+                            <input type="submit" class="btn btn-warning btn-sm" id="envoi_message" value="Envoyer" disabled>
 
                         </span>
                             </div>

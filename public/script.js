@@ -1,9 +1,21 @@
 // Connexion à socket.io
 var socket = io.connect('http://localhost:8080');
 
+/*
 var pseudo = prompt('Quel est votre pseudo ?');
 socket.emit('nouveau_client', pseudo);
 document.title = pseudo + ' - ' + document.title;
+$('.first').hide();
+*/
+var  pseudo="";
+$('#formulaire_login').submit(function (event) {
+    event.preventDefault();
+    var  pseudo=$('#pseudo').val();
+    socket.emit('nouveau_client', pseudo);
+    $('#message').removeAttr("disabled");
+    $('#envoi_message').removeAttr("disabled");
+    $('.first').hide();
+});
 
 
 socket.on('message', function(data) {
