@@ -57,3 +57,21 @@
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
     background-color: #555;
 }
+
+.first{
+    background-color: #000000;
+}
+#room_chat strong {
+    color: white;
+    background-color: black;
+    padding: 2px;
+}
+
+.first{
+    background-color: #000000;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    opacity: 0.8;
+}
