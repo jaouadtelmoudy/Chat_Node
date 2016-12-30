@@ -13,6 +13,7 @@ $('#formulaire_login').submit(function (event) {
     var  pseudo=$('#pseudo').val();
     socket.emit('nouveau_client', pseudo);
     $('#message').removeAttr("disabled");
+    $('#message').focus();
     $('#envoi_message').removeAttr("disabled");
     $('.first').hide();
 });
@@ -20,12 +21,15 @@ $('#formulaire_login').submit(function (event) {
 
 socket.on('message', function(data) {
     insereMessage(data.pseudo, data.message,data.horaire);
+    $('.panel-body').animate({scrollTop : $('.panel-body').prop('scrollHeight')},500);
 })
 
 
-socket.on('nouveau_client', function(pseudo) {
-    $('#room_chat').prepend('<p><em>' + pseudo + ' a rejoint le Chat !</em></p>');
+socket.on('nouveau_client', function(data) {
+    $('#room_chat').prepend('<p><em>' + data.pseudo + ' a rejoint le Chat !</em></p>');
+    $('#nbrUser').text(" [ "+ data.nbrUsers + " connecté(s) ]");
 })
+
 
 
 $('#formulaire_chat').submit(function (event) {
@@ -38,5 +42,5 @@ $('#formulaire_chat').submit(function (event) {
 
 
 function insereMessage(pseudo, message, dateTime) {
-    $('#room_chat').prepend('<p><strong>' + pseudo + '</strong> <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+dateTime+'</small> : ' + message + '</p>');
+    $('#room_chat').append('<p><strong>' + pseudo + '</strong> <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+dateTime+'</small> : ' + message + '</p>');
 }
