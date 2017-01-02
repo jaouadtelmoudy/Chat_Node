@@ -28,10 +28,23 @@ io.sockets.on('connection', function (socket, pseudo) {
         var current_hour = new Date();
         var h=current_hour.getHours();
         var m=current_hour.getMinutes();
-        var s=current_hour.getSeconds()
+        var s=current_hour.getSeconds();
 
         //socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message, horaire:h+':'+m+' - '+s});
         io.sockets.emit('message', {pseudo: socket.pseudo, message: message, horaire:h+':'+m+' - '+s});
+    });
+
+
+    socket.on('decon', function (pseudo) {
+
+        for(var i=0;i<users.length;i++){
+            if(pseudo===users[i]) {
+                delete users[i];
+                console.log(users[i])
+            }
+        }
+        io.sockets.emit('decon', {pseudo: socket.pseudo});
+        socket.pseudo = "";
     });
 
 });

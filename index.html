@@ -17,7 +17,7 @@
                     <input id="pseudo" name="message" type="text" class="form-control input-sm"
                            placeholder="Votre message..." autofocus />
             <span class="input-group-btn">
-                <input type="submit" class="btn btn-warning btn-sm" id="envoi_pseudo" value="Envoyer">
+                <input type="submit" class="btn btn-warning btn-sm" id="envoi_pseudo" value="Connexion">
             </span>
                 </div>
             </form>
@@ -48,8 +48,8 @@
                                         class="glyphicon glyphicon-time"></span>
                                     Away</a></li>
                                 <li class="divider"></li>
-                                <li><a href="http://www.jquery2dotnet.com"><span class="glyphicon glyphicon-off"></span>
-                                    Sign Out</a></li>
+                                <li><a href="#" onclick="deconnexion()"><span class="glyphicon glyphicon-off"></span>
+                                    Déconnexion</a></li>
                             </ul>
                         </div>
                     </div>
@@ -87,6 +87,7 @@
 
 
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="css/bootstrap/dist/js/bootstrap.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="script.js"></script>
 
