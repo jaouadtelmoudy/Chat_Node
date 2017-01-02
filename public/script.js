@@ -12,6 +12,7 @@ $('#formulaire_login').submit(function (event) {
     event.preventDefault();
     var  pseudo=$('#pseudo').val();
     socket.emit('nouveau_client', pseudo);
+    sessionStorage.setItem("pseudo",pseudo);
     $('#message').removeAttr("disabled");
     $('#message').focus();
     $('#envoi_message').removeAttr("disabled");
@@ -43,4 +44,13 @@ $('#formulaire_chat').submit(function (event) {
 
 function insereMessage(pseudo, message, dateTime) {
     $('#room_chat').append('<p><strong>' + pseudo + '</strong> <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>'+dateTime+'</small> : ' + message + '</p>');
+}
+
+
+function deconnexion(){
+    socket.emit('decon', sessionStorage.getItem("pseudo"));
+    sessionStorage.removeItem("pseudo");
+    $('#message').attr("disabled","disabled");
+    $('#envoi_message').attr("disabled","disabled");
+    $('.first').show();
 }
